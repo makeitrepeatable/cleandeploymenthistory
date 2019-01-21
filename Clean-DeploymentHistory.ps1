@@ -6,7 +6,7 @@ function Get-Deployments
   param(
       [int]
       [ValidateRange(10,800)] 
-      $SkipLast = 10,
+      $SkipLast = 0,
       [Parameter(Mandatory)]
       [string]$ResourceGroupName
     )
@@ -44,7 +44,7 @@ function Optimize-ResourceGroupDeployments
         $ResourceGroupName = [string]::Empty,
         [int]
         [ValidateRange(10,800)] 
-        $SkipLast = 75        
+        $SkipLast = 0        
       )
 
     # check for single resource group deployment
