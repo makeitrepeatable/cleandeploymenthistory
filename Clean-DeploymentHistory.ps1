@@ -34,10 +34,6 @@ function Remove-Deployments
                 Write-Verbose ('Successfully removed deployment: "{0}" @[{1}] ' -f $_.DeploymentName, $_.timestamp)
             }
         }
-        else 
-        {
-            Write-Output "There are no deployments on this Resource Group."
-        }
     }
 }
 
@@ -85,5 +81,13 @@ function Optimize-ResourceGroupDeployments
     }
 }
 
+
 $deployments = Get-Deployments -ResourceGroupName $($env:ResourceGroupName)
-Remove-Deployments -ResourceGroupName $($env:ResourceGroupName) -Deployments $deployments
+
+#if $deployments is not null
+if ($deployments) {
+    Remove-Deployments -ResourceGroupName $($env:ResourceGroupName) -Deployments $deployments
+}
+else {
+    Write-Host "There are no deployments for this Resource Group."
+}
