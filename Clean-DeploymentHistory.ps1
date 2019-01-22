@@ -89,5 +89,5 @@ if ($deployments) {
     Remove-Deployments -ResourceGroupName $($env:ResourceGroupName) -Deployments $deployments
 }
 else {
-    Write-Host "There are no deployments for this Resource Group."
+    Write-Host "There are no deployments for this Resource Group." -foregroundcolor yellow
 }
