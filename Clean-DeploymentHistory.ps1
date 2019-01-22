@@ -80,3 +80,6 @@ function Optimize-ResourceGroupDeployments
         Write-Output ('No Deployments need be removed from "{0}"' -f $ResourceGroupName)      
     }
 }
+
+$deployments = Get-Deployments -ResourceGroupName $($env:ResourceGroupName)
+Remove-Deployments -ResourceGroupName $($env:ResourceGroupName) -Deployments $deployments
